@@ -9,11 +9,16 @@
         :root {
             --bg-dark: #0a0f1c;
             --bg-card: #131b2f;
+            --bg-input: #0d1424;
             --text-light: #f8fafc;
             --text-muted: #94a3b8;
             --accent-purple: #9333ea;
             --accent-blue: #2563eb;
             --gradient: linear-gradient(135deg, #2563eb, #9333ea);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         * {
@@ -39,13 +44,13 @@
         header {
             padding: 40px 0 20px 0;
             display: flex;
-            flex-direction: column; /* Plaatst logo en menu onder elkaar */
-            align-items: center;    /* Centreert alles horizontaal */
-            gap: 30px;              /* Ruimte tussen logo en navigatiemenu */
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
         }
 
         .logo-img {
-            max-height: 160px;      /* Aangepast voor het brede logo */
+            max-height: 160px;
             max-width: 100%;
             object-fit: contain;
             border-radius: 8px;
@@ -54,14 +59,15 @@
         .nav-links {
             display: flex;
             align-items: center;
-            flex-wrap: wrap;        /* Zorgt dat het menu mooi schaalt op mobiel */
+            flex-wrap: wrap;
             justify-content: center;
+            gap: 10px;
         }
 
         .nav-links a {
             color: var(--text-light);
             text-decoration: none;
-            margin: 0 15px;         /* Gelijkmatige ruimte rondom links */
+            margin: 0 15px;
             font-weight: 600;
             transition: color 0.3s ease;
         }
@@ -100,6 +106,8 @@
             text-decoration: none;
             font-size: 1.1rem;
             font-weight: bold;
+            border: none;
+            cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
@@ -208,17 +216,123 @@
             top: -2px;
         }
 
+        /* Contact Sectie & Formulier */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .contact-perks {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .contact-perks li {
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .contact-perks li::before {
+            content: "→";
+            color: var(--accent-purple);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .contact-card {
+            background-color: var(--bg-card);
+            padding: 40px 35px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background-color: var(--bg-input);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .linkedin-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: 1px solid var(--accent-blue);
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .linkedin-btn:hover {
+            background-color: rgba(37, 99, 235, 0.15);
+        }
+
         /* Footer */
         footer {
-            background-color: var(--bg-card);
-            padding: 40px 0;
+            background-color: #060913;
+            padding: 35px 0;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.08);
         }
 
         .footer-text {
             color: var(--text-muted);
-            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
         }
     </style>
 </head>
@@ -279,14 +393,50 @@
         </div>
     </section>
 
-    <!-- Footer / Contact -->
-    <footer id="contact">
+    <!-- Contact & Gratis Proces-Scan Sectie -->
+    <section id="contact" class="container">
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h2>Vraag een gratis proces-scan aan</h2>
+                <p>Benieuwd hoeveel uur jouw organisatie wekelijks kan besparen? Laat je gegevens achter en beschrijf kort welk handmatig proces nu de meeste tijd kost. Wij kijken direct en vrijblijvend met je mee.</p>
+                <ul class="contact-perks">
+                    <li>Geen vrijblijvend verkoopverhaal, maar direct een eerlijke haalbaarheidscheck.</li>
+                    <li>Inzicht in de verwachte tijdswinst en terugverdientijd.</li>
+                    <li>Binnen 24 uur een persoonlijke reactie.</li>
+                </ul>
+                <p style="margin-bottom: 10px;">Liever direct connecten via LinkedIn?</p>
+                <a href="https://www.linkedin.com/company/muller-corp-bv" target="_blank" class="linkedin-btn">Bezoek onze LinkedIn pagina</a>
+            </div>
+
+            <div class="contact-card">
+                <!-- Vervang JOUW_FORMSPREE_CODE hieronder door jouw unieke Formspree ID -->
+                <form action="https://formspree.io/f/xljgoeeq" method="POST">
+                    <div class="form-group">
+                        <label for="naam">Naam *</label>
+                        <input type="text" id="naam" name="naam" placeholder="Jouw naam" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bedrijf">Bedrijfsnaam</label>
+                        <input type="text" id="bedrijf" name="bedrijf" placeholder="Naam van je organisatie">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactgegevens">E-mailadres of Telefoonnummer *</label>
+                        <input type="text" id="contactgegevens" name="contactgegevens" placeholder="naam@bedrijf.nl of 06-12345678" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bericht">Welk proces wil je automatiseren? *</label>
+                        <textarea id="bericht" name="bericht" placeholder="Vertel kort welk repeterend proces of knelpunt je graag wilt aanpakken..." required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%;">Verstuur aanvraag</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
         <div class="container">
-            <h2 style="margin-bottom: 20px; color: white;">Klaar om de backoffice te versnellen?</h2>
-            <p class="footer-text">Muller Automation | Dé No-Nonsense RPA Specialist</p>
-            <p class="footer-text">
-                <a href="https://www.linkedin.com/company/muller-corp-bv" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-weight: bold;">Volg ons op LinkedIn</a>
-            </p>
+            <p class="footer-text">&copy; 2026 Muller Automation (Muller Corp BV) | Dé No-Nonsense RPA Specialist</p>
         </div>
     </footer>
 
