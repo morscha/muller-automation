@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muller Automation | De No-Nonsense RPA Specialist</title>
+    <style>
+        /* Kleurenpalet & Basisinstellingen */
+        :root {
+            --bg-dark: #0a0f1c;
+            --bg-card: #131b2f;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-purple: #9333ea;
+            --accent-blue: #2563eb;
+            --gradient: linear-gradient(135deg, #2563eb, #9333ea);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigatie & Gecentreerd Logo */
+        header {
+            padding: 40px 0 20px 0;
+            display: flex;
+            flex-direction: column; /* Plaatst logo en menu onder elkaar */
+            align-items: center;    /* Centreert alles horizontaal */
+            gap: 30px;              /* Ruimte tussen logo en navigatiemenu */
+        }
+
+        .logo-img {
+            max-height: 160px;      /* Aangepast voor het brede logo */
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;        /* Zorgt dat het menu mooi schaalt op mobiel */
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 15px;         /* Gelijkmatige ruimte rondom links */
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-purple);
+        }
+
+        /* Hero Sectie */
+        .hero {
+            padding: 80px 0 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(147, 51, 234, 0.3);
+        }
+
+        /* Grid Layouts voor Cards */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        /* Sectie Opmaak */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Cards (Mens + Robot) */
+        .card {
+            background-color: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: 12px;
+            border-top: 4px solid var(--accent-purple);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .card p {
+            color: var(--text-muted);
+        }
+
+        /* Techniek / Business Model Sectie met donkerdere achtergrond */
+        .tech-section {
+            background-color: #060913;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .tech-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .tech-text {
+            flex: 1;
+        }
+
+        .tech-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .tech-text p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .tech-text ul {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .tech-text li {
+            margin-bottom: 20px;
+            padding-left: 35px;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .tech-text li::before {
+            content: "✓";
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-card);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header met gecentreerd logo -->
+        <header>
+            <img src="Muller-Automation-Logo-Breed.jpg" alt="Muller Automation Logo" class="logo-img">
+            <nav class="nav-links">
+                <a href="#mens-en-robot">Mens & Robot</a>
+                <a href="#model">Ons Model</a>
+                <a href="#contact" class="cta-button" style="padding: 10px 20px; margin-left: 15px;">Contact</a>
+            </nav>
+        </header>
+
+        <!-- Hero Sectie -->
+        <section class="hero">
+            <h1>Zorgeloos automatiseren.<br>Alleen het resultaat telt.</h1>
+            <p>Personeelstekorten, stijgende administratieve lasten en systemen die niet communiceren. Muller Automation is de no-nonsense RPA club die dit oplost. Wij regelen de techniek, jij plukt de vruchten.</p>
+            <a href="#contact" class="cta-button">Vraag een gratis proces-scan aan</a>
+        </section>
+    </div>
+
+    <!-- Pijnpunten Sectie / De combinatie Mens & Robot -->
+    <section id="mens-en-robot" class="container">
+        <h2 class="section-title">De Mens + De Robot</h2>
+        <p class="section-subtitle">Niet álles kan blind geautomatiseerd worden. Soms is menselijk inzicht cruciaal. Wij bouwen slimme bots die het voorwerk doen, zodat jouw team de beslissingen kan nemen.</p>
+        
+        <div class="grid-3">
+            <div class="card">
+                <h3>De Realiteit</h3>
+                <p>Processen zijn zelden 100% rechttoe-rechtaan. Wij combineren de menselijke intelligentie van jouw medewerkers met de brute rekenkracht van onze softwarerobots.</p>
+            </div>
+            <div class="card">
+                <h3>Datagedreven Actie</h3>
+                <p>Onze bots ontsluiten data uit legacy systemen, maken het overzichtelijk en bereiden het werk voor. Jouw medewerkers hoeven alleen nog maar te accorderen.</p>
+            </div>
+            <div class="card">
+                <h3>Sneller & Beter</h3>
+                <p>Door deze naadloze samenwerking verdwijnen obstakels. Tijdrovende knelpunten worden opgelost en processen worden sneller, beter en goedkoper uitgevoerd.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ons Model -->
+    <section id="model" class="tech-section">
+        <div class="container tech-content">
+            <div class="tech-text">
+                <h2>Ons no-nonsense model.</h2>
+                <p>Wij investeren mee in de business cases van onze klanten. Geen torenhoge voorinvesteringen, geen verborgen licentiekosten. Wij garanderen besparing en verbetering, meetbaar en transparant.</p>
+                <ul>
+                    <li><strong>Wij de uitvoering, jij het resultaat:</strong> Van het spotten van RPA-kansen tot de bouw en het beheer. Wij doen het zware werk met minimale belasting voor jouw interne organisatie.</li>
+                    <li><strong>Geen consultancy-valkuil:</strong> Bij ons full-service model betaal je puur voor het gebruik en de opbrengst van de robot. Niet voor eindeloze adviestrajecten of dure softwarelicenties.</li>
+                    <li><strong>Binnen 8 tot 10 weken live:</strong> Geen jarenlange IT-projecten. Binnen enkele weken levert jouw eerste maatwerk-bot al direct tijdswinst op.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact">
+        <div class="container">
+            <h2 style="margin-bottom: 20px; color: white;">Klaar om de backoffice te versnellen?</h2>
+            <p class="footer-text">Muller Automation | Dé No-Nonsense RPA Specialist</p>
+            <p class="footer-text">
+                <a href="https://www.linkedin.com/company/muller-corp-bv" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-weight: bold;">Volg ons op LinkedIn</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
